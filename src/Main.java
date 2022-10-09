@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +8,7 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
     static FinanceHandler financeHandler;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int userInput = FinalVariables.USER_INPUT_INITIAL_POINT;
         while (userInput != FinalVariables.USER_INPUT_FINISH_POINT){
             userInput = showMenu(userInput);
