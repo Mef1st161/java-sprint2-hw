@@ -8,14 +8,6 @@ public class FinanceHandler {
     public FinanceHandler(ArrayList<YearData> yearDataArrayList, ArrayList<MonthData> monthDataArrayList){
         setYearDataArrayList(yearDataArrayList);
         setMonthDataArrayList(monthDataArrayList);
-
-        /*
-        for (YearData yearData: yearDataArrayList){
-            for (YearEntry yearEntry : yearData.getYearEntries()){
-                System.out.println(yearEntry.getIsExpense());
-            }
-
-        }*/
     }
 
     public void setMonthDataArrayList(ArrayList<MonthData> monthDataArrayList) {
@@ -84,10 +76,6 @@ public class FinanceHandler {
             System.out.println(FinalVariables.ANSI_GREEN +"\tДоходы: "+ month.getIncome() + FinalVariables.ANSI_RED +"\n\tРасходы: " + month.getExpense() + FinalVariables.ANSI_RESET);
             month.showMaxExpenseAndIncome();
         }
-
-
-
-
     }
     public void showYearData(){
         double expenseSum = 0;
@@ -102,8 +90,6 @@ public class FinanceHandler {
                     incomeSum += (double) monthData.getIncome();
                     monthCounter += 1;
                 }
-
-
             }
             System.out.println( FinalVariables.ANSI_RED + "\t\tСредний расход за все месяцы в году: " + (expenseSum/monthCounter) + FinalVariables.ANSI_RESET);
             System.out.println(FinalVariables.ANSI_GREEN + "\t\tСредний доход за все месяцы в году: " + (incomeSum/monthCounter) + FinalVariables.ANSI_RESET);

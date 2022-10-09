@@ -22,7 +22,6 @@ public class MonthData {
         calculateExpenseAndIncome();
         parseName(monthFileName);
         defineActualMonthName(monthName);
-
     }
 
     public void findMaxExpenseAndIncome(){
@@ -35,9 +34,9 @@ public class MonthData {
                 this.maxIncomeValue = monthEntry.getLocalIncome();
                 this.maxIncomeName = monthEntry.getItemName();
             }
-
         }
     }
+
     public void showMaxExpenseAndIncome(){
         if (maxExpenseValue == 0 && maxIncomeValue == 0){
             findMaxExpenseAndIncome();
@@ -63,7 +62,6 @@ public class MonthData {
         monthName = monthFileName.substring(6,8);
         setMonthName(monthName);
         setYearName(yearName);
-
     }
 
     public String getMonthFileName() {
@@ -164,31 +162,19 @@ public class MonthData {
 
     private void defineActualMonthName(String monthName){
         int monthNumber = Integer.parseInt(monthName);
-        switch (monthNumber){
-            case (1): setActualMonthName("Январь");
-                break;
-            case (2): setActualMonthName("Февраль");
-                break;
-            case (3): setActualMonthName("Март");
-                break;
-            case (4): setActualMonthName("Апрель");
-                break;
-            case (5): setActualMonthName("Май");
-                break;
-            case (6): setActualMonthName("Июнь");
-                break;
-            case (7): setActualMonthName("Июль");
-                break;
-            case (8): setActualMonthName("Август");
-                break;
-            case (9): setActualMonthName("Сентябрь");
-                break;
-            case (10): setActualMonthName("Октябрь");
-                break;
-            case (11): setActualMonthName("Ноябрь");
-                break;
-            case (12): setActualMonthName("Декабрь");
-                break;
+        switch (monthNumber) {
+            case (1) -> setActualMonthName("Январь");
+            case (2) -> setActualMonthName("Февраль");
+            case (3) -> setActualMonthName("Март");
+            case (4) -> setActualMonthName("Апрель");
+            case (5) -> setActualMonthName("Май");
+            case (6) -> setActualMonthName("Июнь");
+            case (7) -> setActualMonthName("Июль");
+            case (8) -> setActualMonthName("Август");
+            case (9) -> setActualMonthName("Сентябрь");
+            case (10) -> setActualMonthName("Октябрь");
+            case (11) -> setActualMonthName("Ноябрь");
+            case (12) -> setActualMonthName("Декабрь");
         }
     }
 

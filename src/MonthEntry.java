@@ -3,7 +3,6 @@ public class MonthEntry {
     private Boolean isExpense;
     private Integer quantity ;
     private Integer sumOfOne;
-
     private Integer localExpense = 0;
     private Integer localIncome = 0;
 
@@ -23,8 +22,8 @@ public class MonthEntry {
         else {
             setLocalIncome(quantity * sumOfOne);
         }
-
     }
+
     public String getItemName() {
         return itemName;
     }

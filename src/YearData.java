@@ -12,9 +12,7 @@ public class YearData {
         setHeaders(headers);
         setYearEntries(yearEntries);
         setYearName(yearFileName.substring(2,6));
-
     }
-
 
     public String[] getHeaders() {
         return headers;

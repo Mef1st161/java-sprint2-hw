@@ -26,7 +26,6 @@ public class AccountingScanner {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
     public YearData scanYearlyReport(File path){
         try {
@@ -53,21 +52,14 @@ public class AccountingScanner {
         File[] files = dir.listFiles();
         ArrayList<File> monthFiles = new ArrayList<>();
         if (files != null) {
-            //System.out.println("all files:");
             for (File file: files){
-                //System.out.println(file.getName());
                 if (file.getName().contains("m")){
                     monthFiles.add(file);
                 }
-
             }
-            //System.out.println("month files:");
             for (File file: monthFiles){
-                //System.out.println(file.getName());
                 monthDataArrayList.add(scanMonthlyReport(file));
-
             }
-
         }
         return monthDataArrayList;
     }
@@ -75,23 +67,17 @@ public class AccountingScanner {
     public  ArrayList<YearData> readAllYearFiles(){
         ArrayList<YearData> yearDataArrayList = new ArrayList<>();
         File[] files = dir.listFiles();
-        ArrayList<File> yearFiles = new ArrayList<>();
         if (files != null){
             for (File file: files){
                 if (file.getName().contains("y")){
                     yearDataArrayList.add(scanYearlyReport(file));
                 }
             }
-
         }
         return yearDataArrayList;
     }
 
-
-
     private boolean getBool(String value){
         return (value.toLowerCase().equals("true"));
     }
-
-
 }

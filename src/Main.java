@@ -5,72 +5,31 @@ import java.util.Scanner;
 public class Main {
     private static ArrayList<MonthData> monthDataArrayList = new ArrayList<>();
     private static ArrayList<YearData> yearDataArrayList = new ArrayList<>();
-
     static AccountingScanner accountingScanner = new AccountingScanner();
     public static Scanner scanner = new Scanner(System.in);
     static FinanceHandler financeHandler;
 
-
     public static void main(String[] args) throws IOException {
-       //ArrayList<MonthData> monthDataArrayList = accountingScanner.readAllMonthFiles();
-       //ArrayList<YearData> yearDataArrayList = accountingScanner.readAllYearFiles();
-
-
-        int userInput = 0;
-        while (userInput !=7){
+        int userInput = FinalVariables.USER_INPUT_INITIAL_POINT;
+        while (userInput != FinalVariables.USER_INPUT_FINISH_POINT){
             userInput = showMenu(userInput);
             menuSwitch(userInput);
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Поехали!
     }
 
     public static int showMenu(int userInput){
-            if (userInput == 6){
+            if (userInput == FinalVariables.USER_INPUT_EXIT_MENU){
                 System.out.println(FinalVariables.ANSI_RED + "\t\t Вы уверены? y/n" + FinalVariables.ANSI_RESET);
                 String userAnswer = scanner.next();
                 if (userAnswer.equals("n") || userAnswer.equals("N")){
-                    return 0;
+                    return FinalVariables.USER_INPUT_INITIAL_POINT;
                 }
                 else if (userAnswer.equals("y") || userAnswer.equals("Y")){
-                    return 7;
+                    return FinalVariables.USER_INPUT_FINISH_POINT;
                 }
                 else {
                     System.out.println("Повторите ответ: y = да, n = нет");
-                    return 6;
+                    return FinalVariables.USER_INPUT_EXIT_MENU;
                 }
             }
             else {
@@ -86,61 +45,50 @@ public class Main {
 
             if (userInput < 0 || userInput > 6){
                 System.out.println(FinalVariables.ANSI_RED + "Такого пункта в меню нет, повторите" + FinalVariables.ANSI_RESET);
-                return 0;
+                return FinalVariables.USER_INPUT_INITIAL_POINT;
             }
 
             return userInput;
     }
     public static void menuSwitch(int userInput){
         switch (userInput){
-            case (1):
+            case (FinalVariables.USER_INPUT_READ_ALL_MONTHS_MENU):
                 if (monthDataArrayList.size() == 0){
                     monthDataArrayList = accountingScanner.readAllMonthFiles();
                 }
-
                 System.out.println(FinalVariables.ANSI_BLUE + "Месячные отчеты считаны, было найдено отчетов: " + monthDataArrayList.size() + FinalVariables.ANSI_RESET);
                 break;
-            case (2):
+            case (FinalVariables.USER_INPUT_READ_ALL_YEARS_MENU):
                 if (yearDataArrayList .size() == 0){
                     yearDataArrayList = accountingScanner.readAllYearFiles();
                 }
                 System.out.println(FinalVariables.ANSI_BLUE + "Годовые отчеты считаны, было найдено отчетов: " + yearDataArrayList.size() + FinalVariables.ANSI_RESET);
                 break;
-            case (3):
+            case (FinalVariables.USER_INPUT_COMPARE_REPORTS_MENU):
                 if (!monthDataArrayList.isEmpty() && !yearDataArrayList.isEmpty()){
-                    //System.out.println("Списки не пусты, будем работать");
                     if (financeHandler == null){
                         financeHandler = new FinanceHandler(yearDataArrayList, monthDataArrayList);
                     }
-                    //financeHandler.showMonthExpenses();
                     financeHandler.compareYearAndMonth();
-
-
                 }
                 else {
                     System.out.println(FinalVariables.ANSI_RED + "Сначала считайте месячные и годовые отчеты" + FinalVariables.ANSI_RESET);
                 }
                 break;
-            case (4):
+            case (FinalVariables.USER_INPUT_SHOW_MONTH_DATA_MENU):
                 if (!monthDataArrayList.isEmpty() && !yearDataArrayList.isEmpty()){
-                    //System.out.println("Списки не пусты, будем работать");
                     if (financeHandler == null){
                         financeHandler = new FinanceHandler(yearDataArrayList, monthDataArrayList);
                     }
                     System.out.println(" ");
                     financeHandler.showMonthExpenses();
-
-
-
                 }
                 else {
                     System.out.println(FinalVariables.ANSI_RED + "Сначала считайте месячные и годовые отчеты" + FinalVariables.ANSI_RESET);
                 }
-
                 break;
-            case (5):
+            case (FinalVariables.USER_INPUT_SHOW_YEAR_DATA_MENU):
                 if (!monthDataArrayList.isEmpty() && !yearDataArrayList.isEmpty()){
-                    //System.out.println("Списки не пусты, будем работать");
                     if (financeHandler == null){
                         financeHandler = new FinanceHandler(yearDataArrayList, monthDataArrayList);
                     }
@@ -151,8 +99,6 @@ public class Main {
                 }
                 break;
         }
-
     }
-
 }
 
