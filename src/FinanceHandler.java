@@ -40,15 +40,12 @@ public class FinanceHandler {
     }
 
     private void expenseComparator(YearEntry yearEntry, MonthData monthData){
-        if (yearEntry.getAmount() == monthData.getExpense()){
-            //ок
-        }
-        else if (yearEntry.getAmount() > monthData.getExpense()){
+        if (yearEntry.getAmount() > monthData.getExpense()){
             System.out.println("Обнаружено несоответствие: в месяце " + monthData.getMonthName() + " " +monthData.getYearName() +
                     " года значение расходов в годовом отчете больше чем в месячном " + yearEntry.getAmount() + " vs " + monthData.getExpense());
             errorCounter += 1;
         }
-        else {
+        else if(yearEntry.getAmount() < monthData.getExpense()){
             System.out.println("Обнаружено несоответствие: в месяце " + monthData.getMonthName() + " " +monthData.getYearName() +
                     " года значение расходов в годовом отчете меньше чем в месячном " + yearEntry.getAmount() + " vs " + monthData.getExpense());
             errorCounter +=1;
@@ -56,15 +53,12 @@ public class FinanceHandler {
     }
 
     private void incomeComparator(YearEntry yearEntry, MonthData monthData){
-        if (yearEntry.getAmount() == monthData.getIncome()){
-            //ок
-        }
-        else if (yearEntry.getAmount() > monthData.getIncome()){
+        if (yearEntry.getAmount() > monthData.getIncome()){
             System.out.println("Обнаружено несоответствие: в месяце " + monthData.getMonthName() + " " + monthData.getYearName() +
                     " года значение доходов в годовом отчете больше чем в месячном " + yearEntry.getAmount() + " vs " + monthData.getIncome());
             errorCounter += 1;
         }
-        else {
+        else if(yearEntry.getAmount() < monthData.getIncome()){
             System.out.println("Обнаружено несоответствие: в месяце " + monthData.getMonthName() +  " " + monthData.getYearName() +
                     " года значение доходов в годовом отчете меньше чем в месячном " + yearEntry.getAmount() + " vs " + monthData.getIncome());
         }
@@ -86,8 +80,8 @@ public class FinanceHandler {
             for (MonthData monthData: monthDataArrayList){
                 if (yearData.getYearName().equals(monthData.getYearName())){
                     System.out.println("\tПрибыль за " + monthData.getActualMonthName() + " составила " + (monthData.getIncome() - monthData.getExpense()));
-                    expenseSum += (double) monthData.getExpense();
-                    incomeSum += (double) monthData.getIncome();
+                    expenseSum +=  monthData.getExpense();
+                    incomeSum +=  monthData.getIncome();
                     monthCounter += 1;
                 }
             }

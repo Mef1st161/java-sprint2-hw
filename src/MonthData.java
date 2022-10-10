@@ -64,24 +64,12 @@ public class MonthData {
         setYearName(yearName);
     }
 
-    public String getMonthFileName() {
-        return monthFileName;
-    }
-
     public void setMonthFileName(String monthFileName) {
         this.monthFileName = monthFileName;
     }
 
-    public String[] getHeaders() {
-        return headers;
-    }
-
     public void setHeaders(String[] headers) {
         this.headers = headers;
-    }
-
-    public ArrayList<MonthEntry> getMonthEntries() {
-        return monthEntries;
     }
 
     public void setMonthEntries(ArrayList<MonthEntry> monthEntries) {
@@ -92,16 +80,8 @@ public class MonthData {
         return expense;
     }
 
-    public void setExpense(int expense) {
-        this.expense = expense;
-    }
-
     public int getIncome() {
         return income;
-    }
-
-    public void setIncome(int income) {
-        this.income = income;
     }
 
     public String getMonthName() {
@@ -128,66 +108,11 @@ public class MonthData {
         this.actualMonthName = actualMonthName;
     }
 
-    public int getMaxExpenseValue() {
-        return maxExpenseValue;
-    }
-
-    public void setMaxExpenseValue(int maxExpenseValue) {
-        this.maxExpenseValue = maxExpenseValue;
-    }
-
-    public String getMaxExpenseName() {
-        return maxExpenseName;
-    }
-
-    public void setMaxExpenseName(String maxExpenseName) {
-        this.maxExpenseName = maxExpenseName;
-    }
-
-    public int getMaxIncomeValue() {
-        return maxIncomeValue;
-    }
-
-    public void setMaxIncomeValue(int maxIncomeValue) {
-        this.maxIncomeValue = maxIncomeValue;
-    }
-
-    public String getMaxIncomeName() {
-        return maxIncomeName;
-    }
-
-    public void setMaxIncomeName(String maxIncomeName) {
-        this.maxIncomeName = maxIncomeName;
-    }
-
     private void defineActualMonthName(String monthName){
+        String[] monthNames = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь",
+                "Октябрь", "Ноябрь", "Декабрь"};
         int monthNumber = Integer.parseInt(monthName);
-        switch (monthNumber) {
-            case (1) : setActualMonthName("Январь");
-            break;
-            case (2) : setActualMonthName("Февраль");
-                break;
-            case (3) : setActualMonthName("Март");
-                break;
-            case (4) : setActualMonthName("Апрель");
-                break;
-            case (5) : setActualMonthName("Май");
-                break;
-            case (6) : setActualMonthName("Июнь");
-                break;
-            case (7) : setActualMonthName("Июль");
-                break;
-            case (8) : setActualMonthName("Август");
-                break;
-            case (9) : setActualMonthName("Сентябрь");
-                break;
-            case (10) : setActualMonthName("Октябрь");
-                break;
-            case (11) : setActualMonthName("Ноябрь");
-                break;
-            case (12) : setActualMonthName("Декабрь");
-                break;
-        }
+        setActualMonthName(monthNames[monthNumber - 1]);
     }
 
     @Override

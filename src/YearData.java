@@ -14,16 +14,10 @@ public class YearData {
         setYearName(yearFileName.substring(2,6));
     }
 
-    public String[] getHeaders() {
-        return headers;
-    }
     public void setHeaders(String[] headers) {
         this.headers = headers;
     }
 
-    public String getYearFileName() {
-        return yearFileName;
-    }
 
     public void setYearFileName(String yearFileName) {
         this.yearFileName = yearFileName;
