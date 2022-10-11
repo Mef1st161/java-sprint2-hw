@@ -15,7 +15,7 @@ public class MonthData {
     private int maxIncomeValue = 0;
     private String maxIncomeName = "";
 
-    public MonthData(String monthFileName, String[] headers, ArrayList<MonthEntry> monthEntries){
+    public MonthData(String monthFileName, String[] headers, ArrayList<MonthEntry> monthEntries) {
         setMonthFileName(monthFileName);
         setHeaders(headers);
         setMonthEntries(monthEntries);
@@ -24,8 +24,8 @@ public class MonthData {
         defineActualMonthName(monthName);
     }
 
-    public void findMaxExpenseAndIncome(){
-        for (MonthEntry monthEntry : monthEntries){
+    public void findMaxExpenseAndIncome() {
+        for (MonthEntry monthEntry : monthEntries) {
             if (maxExpenseValue < monthEntry.getLocalExpense()){
                 this.maxExpenseValue = monthEntry.getLocalExpense();
                 this.maxExpenseName = monthEntry.getItemName();
@@ -37,25 +37,25 @@ public class MonthData {
         }
     }
 
-    public void showMaxExpenseAndIncome(){
-        if (maxExpenseValue == 0 && maxIncomeValue == 0){
+    public void showMaxExpenseAndIncome() {
+        if (maxExpenseValue == 0 && maxIncomeValue == 0) {
             findMaxExpenseAndIncome();
         }
-        System.out.println("\t\tСамая большая трата месяца: " + FinalVariables.ANSI_RED +this.maxExpenseName + FinalVariables.ANSI_RESET +" и составило " + this.maxExpenseValue);
-        System.out.println("\t\tСамый прибыльный товар месяца: " + FinalVariables.ANSI_GREEN +this.maxIncomeName + FinalVariables.ANSI_RESET + " и составило " + this.maxIncomeValue);
+        System.out.println("\t\tСамая большая трата месяца: " + FinalColorAndMenuVariables.ANSI_RED +this.maxExpenseName + FinalColorAndMenuVariables.ANSI_RESET +" и составило " + this.maxExpenseValue);
+        System.out.println("\t\tСамый прибыльный товар месяца: " + FinalColorAndMenuVariables.ANSI_GREEN +this.maxIncomeName + FinalColorAndMenuVariables.ANSI_RESET + " и составило " + this.maxIncomeValue);
     }
-    public void calculateExpenseAndIncome(){
-        for (MonthEntry monthEntry: monthEntries){
-            if (monthEntry.getExpense()){
+    public void calculateExpenseAndIncome() {
+        for (MonthEntry monthEntry: monthEntries) {
+            if (monthEntry.getExpense()) {
                 this.expense += monthEntry.getQuantity() * monthEntry.getSumOfOne();
             }
-            else{
+            else {
                 this.income += monthEntry.getQuantity() * monthEntry.getSumOfOne();
             }
         }
     }
 
-    private void parseName(String monthFileName){
+    private void parseName(String monthFileName) {
         String monthName = "";
         String yearName = "";
         yearName = monthFileName.substring(2,6);
@@ -108,7 +108,7 @@ public class MonthData {
         this.actualMonthName = actualMonthName;
     }
 
-    private void defineActualMonthName(String monthName){
+    private void defineActualMonthName(String monthName) {
         String[] monthNames = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь",
                 "Октябрь", "Ноябрь", "Декабрь"};
         int monthNumber = Integer.parseInt(monthName);

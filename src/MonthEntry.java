@@ -7,7 +7,7 @@ public class MonthEntry {
     private Integer localIncome = 0;
 
 
-    public MonthEntry(String itemName, Boolean isExpense, Integer quantity, Integer sumOfOne){
+    public MonthEntry(String itemName, Boolean isExpense, Integer quantity, Integer sumOfOne) {
         setItemName(itemName);
         setExpense(isExpense);
         setQuantity(quantity);
@@ -15,8 +15,8 @@ public class MonthEntry {
         calculateMaxIncomeOrExpense(quantity,sumOfOne,isExpense);
     }
 
-    private void calculateMaxIncomeOrExpense(Integer quantity, Integer sumOfOne, Boolean isExpense){
-        if (isExpense){
+    private void calculateMaxIncomeOrExpense(Integer quantity, Integer sumOfOne, Boolean isExpense) {
+        if (isExpense) {
             setExpense(quantity * sumOfOne);
         }
         else {
